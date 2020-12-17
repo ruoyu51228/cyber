@@ -3,7 +3,11 @@ import {
   SwipeItem,
   Search,
   Row,
-  Col
+  Col,
+  Tag,
+  NavBar,
+  TreeSelect,
+  Icon
 } from 'vant'
 
 export default{
@@ -11,5 +15,9 @@ export default{
   SwipeItem,
   Search,
   Row,
-  Col
+  Col,
+  Tag,
+  NavBar,
+  TreeSelect,
+  Icon
 }

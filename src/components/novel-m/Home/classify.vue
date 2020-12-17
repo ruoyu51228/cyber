@@ -3,7 +3,7 @@
     <!-- TODO: 分类 -->
     <div class="novel-main-classify">
       <van-row justify="space-around" align="center" style="height: 80px;">
-        <van-col>
+        <van-col @click.stop="$router.push({path: '/classify'})">
           <div class="type novel-main-icon"
           :style="{'background-image': `url('${require('@assets/img/main-spirit.png')}')`}"></div>
           <br />
@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss">
 .novel-main-classify{
-  padding: 0 16px;
+  padding: var(--main-padding);
   width: 100%;
   height: 80px;
   text-align: center;

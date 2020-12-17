@@ -25,26 +25,28 @@
 
     <!-- TODO: search bar -->
     <van-search class="novel-header-search" 
-    v-model="value" 
+    v-model="state.search" 
     placeholder="请输入搜索关键词"
     input-align="center" />
   </section>
 </template>
 
 <script>
-import {ref} from 'vue'
+import {reactive} from 'vue'
 
 export default {
   setup() {
-    let value = ref("")
-    return { value }
+    let state = reactive({
+      search: '',
+    })
+    return { state }
   }
 }
 </script>
 
 <style lang="scss">
 .novel-m-header{
-  padding: 0 16px;
+  padding: var(--main-padding);
   
   .novel-header-channel{
     width: 100%;
@@ -52,6 +54,7 @@ export default {
     line-height: 48px;
 
     .novel-header-channel_choice{
+      position: relative;
       height: 30px;
       line-height: 28px;
       border-radius: 10px;
@@ -76,7 +79,6 @@ export default {
 
       & > *{ 
         margin-left: 16px;
-        font-weight: 600;
         font-size: 20px;
       }
     }

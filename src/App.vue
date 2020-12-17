@@ -1,16 +1,22 @@
 <template>
-  <router-view/>
+  <router-view v-slot="{Component}">
+    <keep-alive>
+      <component :is="Component"></component>
+    </keep-alive>
+  </router-view>
 </template>
 
 <style lang="scss">
-*{
-  box-sizing: border-box;
-}
+*{ box-sizing: border-box; }
 body{
   margin: 0;
   padding: 0;
   outline: 0;
   background-color: var(--main-background);
+}
+h1,h2,h3,h4,h5{
+  margin: 0;
+  padding: 0;
 }
 
 #app {

@@ -16,5 +16,6 @@ module.exports = {
       .set('@plugin', resolve('src/plugin'))
       .set('@utils', resolve('src/utils'))
       .set('@assets', resolve('src/assets'))
+      .set('@scripts', resolve('src/scripts'))
   }
 }

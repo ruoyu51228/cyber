@@ -1,4 +1,5 @@
 :root{
   --main-color: rgb(255, 67, 67);
   --main-background: rgb(246,247,249);
+  --main-padding: 0 16px;
 }
