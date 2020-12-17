@@ -1,0 +1,128 @@
+{
+  "id": "2136622",
+  "name": "novel-mobile",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "你敢信这是小说网站、。？",
+  "glyphs": [
+    {
+      "icon_id": "2155718",
+      "name": "hot",
+      "font_class": "hot",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "2151305",
+      "name": "book",
+      "font_class": "book",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "2151314",
+      "name": "个人",
+      "font_class": "geren",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "2151369",
+      "name": "书架",
+      "font_class": "shujia",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "10103929",
+      "name": "登入",
+      "font_class": "login01",
+      "unicode": "e741",
+      "unicode_decimal": 59201
+    },
+    {
+      "icon_id": "10130988",
+      "name": "通知",
+      "font_class": "notice01",
+      "unicode": "e753",
+      "unicode_decimal": 59219
+    },
+    {
+      "icon_id": "10022047",
+      "name": "查询",
+      "font_class": "search01",
+      "unicode": "e726",
+      "unicode_decimal": 59174
+    },
+    {
+      "icon_id": "10022054",
+      "name": "新增",
+      "font_class": "new01",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "10025360",
+      "name": "确认",
+      "font_class": "ok01",
+      "unicode": "e733",
+      "unicode_decimal": 59187
+    },
+    {
+      "icon_id": "10103919",
+      "name": "列表",
+      "font_class": "list01",
+      "unicode": "e73f",
+      "unicode_decimal": 59199
+    },
+    {
+      "icon_id": "10103925",
+      "name": "配置",
+      "font_class": "setting01",
+      "unicode": "e740",
+      "unicode_decimal": 59200
+    },
+    {
+      "icon_id": "10103992",
+      "name": "退出",
+      "font_class": "exit01",
+      "unicode": "e742",
+      "unicode_decimal": 59202
+    },
+    {
+      "icon_id": "10104004",
+      "name": "批量",
+      "font_class": "batch01",
+      "unicode": "e744",
+      "unicode_decimal": 59204
+    },
+    {
+      "icon_id": "10130932",
+      "name": "历史记录",
+      "font_class": "history01",
+      "unicode": "e748",
+      "unicode_decimal": 59208
+    },
+    {
+      "icon_id": "10130954",
+      "name": "关注",
+      "font_class": "follow01",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
+    },
+    {
+      "icon_id": "10130958",
+      "name": "收藏",
+      "font_class": "favorites01",
+      "unicode": "e74c",
+      "unicode_decimal": 59212
+    },
+    {
+      "icon_id": "10130973",
+      "name": "消息",
+      "font_class": "message01",
+      "unicode": "e74f",
+      "unicode_decimal": 59215
+    }
+  ]
+}
