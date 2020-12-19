@@ -5,16 +5,16 @@
     left-text="返回"
     right-text="全部作品"
     left-arrow
-    @click-left="goBack()"></van-nav-bar>
+    @click-left="goBack"></van-nav-bar>
   </section>
 </template>
 
 <script>
+import {goBack} from '@scripts/tools'
+
 export default {
   methods: {
-    goBack(){
-      window.history.go(-1)
-    }
+    goBack
   }
 }
 </script>

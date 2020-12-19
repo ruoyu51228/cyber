@@ -3,7 +3,8 @@
     <van-nav-bar
     left-text="玄幻"
     left-arrow
-    @click-right="showMenu">
+    @click-right="showMenu"
+    @click-left="goBack">
       <template #right>
         <div :class="{'diy-menu':true, 'open': state.menuShow}"></div>
       </template>
@@ -12,11 +13,14 @@
     v-model="state.search"
     placeholder="输入作者或书名"
     input-align="center"></van-search>
+
+    
   </section>
 </template>
 
 <script>
 import { reactive } from 'vue'
+import {goBack} from '@scripts/tools'
 
 export default {
   setup() {
@@ -31,6 +35,7 @@ export default {
   },
 
   methods: {
+    goBack,
     showMenu(){
       this.state.menuShow = !this.state.menuShow
       return this.state

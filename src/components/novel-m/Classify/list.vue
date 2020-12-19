@@ -7,7 +7,8 @@
     height="calc(100vh - 49px)" >
 
       <template #content>
-        <div class="novel-mobile-classify_list">
+        <div class="novel-mobile-classify_list" 
+        @click.stop="$router.push({path: '/category'})">
           <div class="novel-mobile-classify_list-item"
             v-for="(item,key) in items[state.mainActiveIndex].children" 
             :key="key">

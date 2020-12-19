@@ -1,6 +1,5 @@
 <template>
-  <section class="novel-mobile-list">
-    <div class="novel-mobile-list_title">狮子强推</div>
+  <section class="novel-mobile-list-book">
     <div class="novel-mobile-booklist">
       <div class="novel-mobile-book-item"
       v-for="(item, key) in bookList" :key="key">
@@ -51,30 +50,7 @@ export default {
 </script>
 
 <style lang="scss">
-.novel-mobile-list {
-  margin-top: 8px;
-  padding: var(--main-padding);
-  padding-bottom: 8px;
-  width: 100%;
-  background-color: #fff;
-
-  .novel-mobile-list_title{
-    position: relative;
-    padding-left: 8px;
-    padding-top: 16px;
-    font-size: 18px;
-    font-weight: 500;
-
-    &::after{
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 16px;
-      width: 2px;
-      height: 24px;
-      background-color: var(--main-color);
-    }
-  }
+.novel-mobile-list-book {
 
   .novel-mobile-booklist{
     position: relative;

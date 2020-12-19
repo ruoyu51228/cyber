@@ -36,6 +36,11 @@ function formatTime(datestr){
       else return '未知'
 }
 
+function goBack(){
+  window.history.go(-1)
+}
+
 module.exports = {
-  formatTime
+  formatTime,
+  goBack
 }
