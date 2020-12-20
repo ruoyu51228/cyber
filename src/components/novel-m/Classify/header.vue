@@ -5,7 +5,8 @@
     left-text="返回"
     right-text="全部作品"
     left-arrow
-    @click-left="goBack"></van-nav-bar>
+    @click-left="goBack"
+    @click-right="$router.push({path: '/category'})"></van-nav-bar>
   </section>
 </template>
 
