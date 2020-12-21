@@ -2,7 +2,8 @@
   <section class="novel-mobile-list-book">
     <div class="novel-mobile-booklist">
       <div class="novel-mobile-book-item"
-      v-for="(item, key) in bookList" :key="key">
+      v-for="(item, key) in bookList" :key="key"
+      @click.stop="$router.push({path: `/detail/${item.title}`})">
         <div class="novel-mobile-book_cover"
         :style="{'background-image': `url('${item.cover}')`}"></div>
         <div class="novel-mobile-book-details">
@@ -28,7 +29,7 @@
 </template>
 
 <script>
-import { formatTime } from '@scripts/tools'
+import { formatTime, calcWordNumber } from '@scripts/tools'
 
 export default {
   props: {
@@ -36,12 +37,7 @@ export default {
   },
 
   methods: {
-    calcWordNumber( val ){
-      let len = val.toString().length;
-      if(len > 8) return Math.floor(val / 10000000) + '亿字'
-      else if (len > 4) return Math.floor(val / 10000) + '万字'
-      return val
-    },
+    calcWordNumber,
     updateDate(val){
       return formatTime(val || null) + '更新'
     }

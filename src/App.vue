@@ -22,5 +22,6 @@ h1,h2,h3,h4,h5{
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: arial, sans-serif;
 }
 </style>

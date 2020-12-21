@@ -7,7 +7,10 @@ import {
   Tag,
   NavBar,
   TreeSelect,
-  Icon
+  Icon,
+  Toast,
+  Image,
+  Button
 } from 'vant'
 
 export default{
@@ -19,5 +22,8 @@ export default{
   Tag,
   NavBar,
   TreeSelect,
-  Icon
+  Icon,
+  Toast,
+  Image,
+  Button
 }

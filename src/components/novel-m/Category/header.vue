@@ -1,5 +1,6 @@
 <template>
   <section class="novel-mobile-category_header">
+    <!-- TODO: category header -->
     <van-nav-bar
     left-text="玄幻"
     left-arrow
@@ -9,10 +10,13 @@
         <div :class="{'diy-menu':true, 'open': state.menuShow}"></div>
       </template>
     </van-nav-bar>
+    
+    <!-- TODO: category search -->
     <van-search
     v-model="state.search"
     placeholder="输入作者或书名"
-    input-align="center"></van-search>
+    input-align="center"
+    @click.stop="$router.push({path: '/search'})"></van-search>
 
     <div :class="{'menu-mask':true,          'diy-active': state.menuShow}"></div>
     <div :class="{'menu-operation-box':true, 'diy-active': state.menuShow}">

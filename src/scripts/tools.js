@@ -40,7 +40,16 @@ function goBack(){
   window.history.go(-1)
 }
 
+
+function calcWordNumber(val) {
+  let len = val.toString().length;
+  if(len > 8) return Math.floor(val / 10000000) + '亿字'
+  else if (len > 4) return Math.floor(val / 10000) + '万字'
+  return val
+}
+
 module.exports = {
   formatTime,
-  goBack
+  goBack,
+  calcWordNumber
 }

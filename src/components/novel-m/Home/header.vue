@@ -27,7 +27,8 @@
     <van-search class="novel-header-search" 
     v-model="state.search" 
     placeholder="请输入搜索关键词"
-    input-align="center" />
+    input-align="center"
+    @click.stop="$router.push({path: '/search'})" />
   </section>
 </template>
 

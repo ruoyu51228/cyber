@@ -6,6 +6,13 @@
   "description": "你敢信这是小说网站、。？",
   "glyphs": [
     {
+      "icon_id": "10025373",
+      "name": "重置",
+      "font_class": "refresh01",
+      "unicode": "e736",
+      "unicode_decimal": 59190
+    },
+    {
       "icon_id": "2155718",
       "name": "hot",
       "font_class": "hot",
