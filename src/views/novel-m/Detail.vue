@@ -2,7 +2,7 @@
   <section class="detail">
     <novel-mobile-book-detail :bookInfo="bookInfo" />
     <novel-mobile-book-more :bookInfo="bookInfo" />
-    <novel-mobile-book-footer />
+    <novel-mobile-book-footer :bookInfo="bookInfo" @addBook="addBook" />
   </section>
 </template>
 
@@ -36,6 +36,12 @@ export default {
         wordNumber: "4403760",
         updated_at: "2020-12-21 14:11",
       }
+    }
+  },
+
+  methods: {
+    addBook(flag) {
+      this.bookInfo.add = flag;
     }
   }
 }

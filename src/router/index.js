@@ -31,6 +31,11 @@ const routes = [
     path: '/detail/:book',
     name: 'book detail',
     component: () => import('../views/novel-m/Detail')
+  },
+  {
+    path: '/reader',
+    name: 'Reader',
+    component: () => import('../views/novel-m/Reader')
   }
 ]
 

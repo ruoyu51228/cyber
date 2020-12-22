@@ -3,9 +3,12 @@
     <!-- detail header -->
     <van-nav-bar
     left-arrow
-    :right-text="bookInfo.add ? '已加入书架' : '加入书架'"
     @click-left="goBack"
-    @click-right="addBook"></van-nav-bar>
+    @click-right="$router.push({path: '/search'})">
+      <template #right>
+        <i class="iconfont">&#xe726;</i>
+      </template>
+    </van-nav-bar>
 
     <!-- detail info -->
     <div class="detail-background"
@@ -44,11 +47,7 @@ export default {
 
   methods: {
     goBack,
-    calcWordNumber,
-    addBook(){
-      if(this.bookInfo.add) return 
-      this.$toast.success('添加成功！');
-    }
+    calcWordNumber
   }
 }
 </script>
@@ -67,6 +66,9 @@ export default {
   .van-nav-bar__text{
     padding: 0;
     color: #333;
+  }
+  .van-nav-bar__right .iconfont{
+    font-size: 20px;
   }
 }
 

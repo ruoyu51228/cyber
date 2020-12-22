@@ -1,15 +1,28 @@
 <template>
   <section class="novel-mobile-detail-footer">
     <van-row justify="space-around">
-      <van-button round size="small" >加入书架</van-button>
-      <van-button round size="small" type="danger" >免费试读</van-button>
+      <van-button round size="small" 
+      :disabled="bookInfo.add"
+      @click.stop="add">
+        {{bookInfo.add ? '已加入书架' : '加入书架'}}
+      </van-button>
+      <van-button round size="small" type="danger" >立即阅读</van-button>
     </van-row>
   </section>
 </template>
 
 <script>
 export default {
+  props: {
+    bookInfo: Object
+  },
 
+  methods: {
+    add() {
+      this.$emit('addBook', true)
+      this.$toast.success('添加成功')
+    }
+  }
 }
 </script>
 

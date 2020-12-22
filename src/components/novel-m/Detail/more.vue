@@ -53,6 +53,7 @@ export default {
 
     .describe{ font-size: 18px; }
     span{ font-weight: 100; text-align: justify; line-height: 26px; }
+    .tag{ margin-top: 8px; }
   }
   .detail-chapter{
     font-size: 14px;
