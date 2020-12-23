@@ -8,7 +8,11 @@ module.exports = {
   devServer: {
     disableHostCheck: false,
     host: 'localhost',
-    port: 8080
+    port: 8080,
+    overlay: {
+        warnings: false,
+        errors: false
+    },
   },
   chainWebpack(config){
     config.resolve.alias
@@ -17,5 +21,6 @@ module.exports = {
       .set('@utils', resolve('src/utils'))
       .set('@assets', resolve('src/assets'))
       .set('@scripts', resolve('src/scripts'))
-  }
+  },
+  lintOnSave: false
 }
