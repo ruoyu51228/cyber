@@ -9,7 +9,7 @@ import '@assets/icon/iconfont.css'
 import '@assets/icon/iconfont.js'
 
 import 'vant/lib/button/style';
-import initApp from '@utils/init';
+import initApp from '@utils/init'
 
 createApp(App)
   .use(store)

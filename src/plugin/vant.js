@@ -10,7 +10,11 @@ import {
   Icon,
   Toast,
   Image,
-  Button
+  Button,
+  Form,
+  Field,
+  Tabbar,
+  TabbarItem
 } from 'vant'
 
 export default{
@@ -25,5 +29,9 @@ export default{
   Icon,
   Toast,
   Image,
-  Button
+  Button,
+  Form,
+  Field,
+  Tabbar,
+  TabbarItem
 }

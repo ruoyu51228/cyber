@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@d2-projects/vue-table-import": "^1.0.1",
     "alloyfinger": "^0.1.16",
     "core-js": "^3.6.5",
     "vant": "^3.0.0-rc.3",

@@ -47,13 +47,8 @@ function calcWordNumber(val) {
   return val + '字'
 }
 
-function calcPosition(position, width){
-  
-}
-
 module.exports = {
   formatTime,
   goBack,
-  calcWordNumber,
-  calcPosition
+  calcWordNumber
 }

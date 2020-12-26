@@ -1,12 +1,13 @@
 <template>
   <section class="novel-mobile-reader_main"
     ref="chapterContent">
-    <van-nav-bar :left-text="chapter[chapter.length - 2].title"></van-nav-bar>
+    <van-nav-bar 
+    :left-text="chapter[chapter.length - 2].title"></van-nav-bar>
 
     <div :class="{content: true, 'transtion': animation && !touchOffset}" 
     :style="{transform: `translateX(-${calcPage + touchOffset}px)`}">
       <h2>{{chapter[chapter.length - 2].title}}</h2>
-      <span v-html="chapter[chapter.length - 2].content"></span>
+      <div v-html="chapter[chapter.length - 2].content"></div>
     </div>
 
     <van-row class="footer" justify="space-between">
@@ -18,7 +19,7 @@
 
 <script>
 import AlloyFinger from 'alloyfinger'
-import { ref, computed } from 'vue'
+import { toRefs, computed, reactive } from 'vue'
 
 export default {
   props: {
@@ -26,25 +27,34 @@ export default {
   },
 
   setup() {
-    let af = ref(null),
-        deviceWidth = ref(0),
-        touchOffset = ref(0),
-        currentPage = ref(0),
-        totalPage = ref(0),
-        animation = ref(true);
-
-    let calcPage = computed(() => {
-      return currentPage.value * (deviceWidth.value - 16)
+    let state = reactive({
+      af : null,
+      deviceWidth: 0,
+      touchOffset: 0,
+      currentPage: 0,
+      totalPage: 0,
+      animation: false,
+      prev: false,
+      calcPage: computed(() => {
+        return state.currentPage * (state.deviceWidth - 16)
+      }),
     })
 
     return {
-      af,
-      calcPage,
-      deviceWidth,
-      touchOffset,
-      currentPage,
-      totalPage,
-      animation
+      ...toRefs(state),
+    }
+  },
+
+  watch: {
+    chapter:{
+      deep: true,
+      handler: function(){
+        this.currentPage = 0;
+        setTimeout(() => {
+          this.totalPage = Math.ceil(this.$refs.chapterContent.scrollWidth / this.deviceWidth) - 1
+          this.currentPage = (this.currentPage == 0 && this.prev) ? 0 : this.totalPage;
+        }, 0);
+      }
     }
   },
 
@@ -74,6 +84,8 @@ export default {
 
           } else if(ev.direction == 'Right'){
             _this.currentPage >= 1 && index--
+            //  返回上一章
+            if(_this.currentPage == 0) _this.cutChapt(0)
           }
 
           _this.currentPage += index;
@@ -85,8 +97,10 @@ export default {
           // 屏幕三等分，根据点击位置确定翻页方向
           if(position < width / 3){
              _this.currentPage > 0 && _this.currentPage--;
+            //  返回上一章
+             if(_this.currentPage == 0) _this.cutChapt(0);
           } else if (position > width / 3 && position < width - (width / 3)){
-             console.log( 'middle');
+             _this.$emit('getTool')
           } else{
             _this.currentPage <= _this.totalPage && _this.currentPage++;
             // 最后一页是进入下一章，且页面归零
@@ -98,13 +112,12 @@ export default {
 
     cutChapt(flag){
       this.$emit('cutChapter',flag)
+      this.prev = flag
       this.animation = false;
-      this.totalPage = Math.ceil(this.$refs.chapterContent.scrollWidth / this.deviceWidth) - 1;
-      this.currentPage = flag ? 0 : this.totalPage;
     }
   },
 
-  activated(){
+  mounted(){
     this.getFinger();
     this.deviceWidth = this.$refs.chapterContent.clientWidth
     this.totalPage = Math.ceil(this.$refs.chapterContent.scrollWidth / this.deviceWidth) - 1;
