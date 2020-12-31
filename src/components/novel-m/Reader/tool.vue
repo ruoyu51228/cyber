@@ -49,6 +49,7 @@ export default {
     let state = reactive({
       showList: false,
       listStatus: function(){
+        refreshScrollTop()
         state.showList = !state.showList
       }
     })
@@ -56,11 +57,14 @@ export default {
 
     onMounted(() => {
       nextTick(() => {
-        // let chapter = props.chapter
-        listViewRef.value.$el.scrollTop = 2280;
-        // console.log((chapter[chapter.length - 2].id * 40) - 120);
+        refreshScrollTop()
       })
     })
+
+    const refreshScrollTop = function(){
+      let chapter = props.chapter
+      listViewRef.value.$el.scrollTop = (chapter[chapter.length - 2].id * 40) - 120;
+    }
 
     return {
       listViewRef,
