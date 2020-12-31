@@ -16,12 +16,14 @@
         <div class="chapterList__title">目录</div>
         
         <list-view
-        ref="listViewDom"
+        class="listViewRef"
+        ref="listViewRef"
         :list="chapList"
         :default-item-height="40"
         style="height: calc(100% - 46px);">
           <template #list="slot">
-            <div>{{slot.item.id}}.{{slot.item.title}}</div>
+            <div :style="{color: chapter[chapter.length -2].id == slot.item.id ? 'var(--main-color)' : ''}"
+            >{{slot.item.id}}.{{slot.item.title}}</div>
           </template>
         </list-view>
       </div>
@@ -50,17 +52,18 @@ export default {
         state.showList = !state.showList
       }
     })
-    let listViewDom = ref(null)
+    let listViewRef = ref(null)
 
     onMounted(() => {
-        console.dir(listViewDom);
       nextTick(() => {
-        // listView.value.scrollTop = props.chapter[props.chapter.length - 2].id * 40 - 120;
+        // let chapter = props.chapter
+        listViewRef.value.$el.scrollTop = 2280;
+        // console.log((chapter[chapter.length - 2].id * 40) - 120);
       })
     })
 
     return {
-      listViewDom,
+      listViewRef,
       ...toRefs(state)
     }
   }
@@ -114,6 +117,13 @@ export default {
     overflow-y: auto;
     transition: .3s linear;
     background-color: #fff;
+
+    .listViewRef{
+      div{
+        padding-left: 16px;
+        line-height: 40px;
+      }
+    }
 
     &__title{
       text-align: center;

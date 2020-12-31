@@ -1,6 +1,6 @@
 <template>
   <section class="reader">
-    <novel-mobile-reader-main :chapter="chapter" @cutChapter="cutChapter" @getTool="triggerTool" />
+    <novel-mobile-reader-main :chapter="chapter" @cutChapter="cutChapter" @getTool="showTool = !showTool" />
     <novel-mobile-reader-tool :chapter="chapter" :chapList="list" v-show="showTool" />
   </section>
 </template>
@@ -28,7 +28,7 @@ export default {
         }
       ],
       list: [],
-      showTool: false
+      showTool: true
     }
   },
 
@@ -44,10 +44,6 @@ export default {
         if(this.chapter.length > 2) this.chapter.pop() 
         else this.$toast.fail('这是第一章哦')
       }
-    },
-    triggerTool(flag){
-      if(flag == 'middle') this.showTool = !this.showTool
-      else this.showTool = false;
     }
   },
 
