@@ -8,24 +8,59 @@
 
     <van-tabbar>
       <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
-      <van-tabbar-item icon="bars">目录</van-tabbar-item>
+      <van-tabbar-item icon="bars" @click.stop="listStatus">目录</van-tabbar-item>
     </van-tabbar>
+
+    <div :class="{'chapterList-box':true, active: showList}" @click.self="listStatus">
+      <div class="chapterList">
+        <div class="chapterList__title">目录</div>
+        
+        <list-view
+        ref="listViewDom"
+        :list="chapList"
+        :default-item-height="40"
+        style="height: calc(100% - 46px);">
+          <template #list="slot">
+            <div>{{slot.item.id}}.{{slot.item.title}}</div>
+          </template>
+        </list-view>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import { toRefs, reactive } from 'vue'
+import { ref, toRefs, reactive, onMounted, nextTick } from 'vue'
+import listView from './list-view'
 
 export default {
-  props: {
-    chapter: Object
+  components: {
+    listView
   },
-  setup() {
+
+  props: {
+    chapter: Object,
+    chapList: Array,
+  },
+
+  setup(props) {
     let state = reactive({
-      chapter: null
+      showList: false,
+      listStatus: function(){
+        state.showList = !state.showList
+      }
+    })
+    let listViewDom = ref(null)
+
+    onMounted(() => {
+        console.dir(listViewDom);
+      nextTick(() => {
+        // listView.value.scrollTop = props.chapter[props.chapter.length - 2].id * 40 - 120;
+      })
     })
 
     return {
+      listViewDom,
       ...toRefs(state)
     }
   }
@@ -39,17 +74,7 @@ export default {
   &__title{ color: #fff; }
   .van-icon{ color: #fff; }
 }
-.add-book{
-  position: fixed;
-  right: 0;
-  top: 60px;
-  padding: 8px 16px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  color: #fff;
-  background-color: #333;
-}
-.van-tabbar{
+.novel-mobile-reader_tool /deep/ .van-tabbar{
   z-index: 99;
   background-color: #333;
 
@@ -60,5 +85,45 @@ export default {
       background-color: #333;
     }
   }
+}
+.add-book{
+  position: fixed;
+  right: 0;
+  top: 60px;
+  padding: 8px 16px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  color: #fff;
+  background-color: #333;
+}
+.chapterList-box{
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,.08);
+
+  .chapterList{
+    position: relative;
+    left: -80%;
+    width: 80%;
+    height: 100vh;
+    overflow-y: auto;
+    transition: .3s linear;
+    background-color: #fff;
+
+    &__title{
+      text-align: center;
+      line-height: 45px;
+      border-bottom: 1px solid var(--main-color);
+    }
+  }
+}
+div.active{
+  visibility: visible;
+  & .chapterList{ left: 0; }
 }
 </style>

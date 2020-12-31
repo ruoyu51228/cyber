@@ -35,6 +35,7 @@ export default {
       totalPage: 0,
       animation: false,
       prev: false,
+      showTool: false,
       calcPage: computed(() => {
         return state.currentPage * (state.deviceWidth - 16)
       }),
@@ -96,15 +97,34 @@ export default {
           _this.animation = true;
           // 屏幕三等分，根据点击位置确定翻页方向
           if(position < width / 3){
-             _this.currentPage > 0 && _this.currentPage--;
-            //  返回上一章
-             if(_this.currentPage == 0) _this.cutChapt(0);
+
+            if(_this.showTool){
+              _this.showTool = false;
+              _this.$emit('getTool')
+              return false
+            } else {
+              if(_this.currentPage > 0) _this.currentPage--;
+              //  返回上一章
+              else if(_this.currentPage - 1 < 0) _this.cutChapt(0);
+            }
+
           } else if (position > width / 3 && position < width - (width / 3)){
-             _this.$emit('getTool')
+            
+            _this.showTool = !_this.showTool
+            _this.$emit('getTool', 'middle')
+
           } else{
-            _this.currentPage <= _this.totalPage && _this.currentPage++;
-            // 最后一页是进入下一章，且页面归零
-            if(_this.currentPage >= _this.totalPage + 1) _this.cutChapt(1)
+
+            if(_this.showTool){
+              _this.showTool = false;
+              _this.$emit('getTool')
+              return 
+            } else{
+              _this.currentPage <= _this.totalPage && _this.currentPage++;
+              // 最后一页是进入下一章，且页面归零
+              if(_this.currentPage >= _this.totalPage + 1) _this.cutChapt(1)
+              _this.$emit('getTool')
+            }
           }
         }
       })

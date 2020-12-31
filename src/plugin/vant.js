@@ -14,7 +14,9 @@ import {
   Form,
   Field,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  List,
+  Cell
 } from 'vant'
 
 export default{
@@ -33,5 +35,7 @@ export default{
   Form,
   Field,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  List,
+  Cell
 }
